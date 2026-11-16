@@ -1,3 +1,4 @@
+from uuid import UUID
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
@@ -11,7 +12,7 @@ class CategoryUpdate(BaseModel):
     description: Optional[str] = None
 
 class CategoryResponse(BaseModel):
-    id: int
+    id: UUID
     name: str
     description: Optional[str] = None
     created_at: datetime

@@ -1,17 +1,19 @@
+from uuid import UUID
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional
+from typing import List
+from app.schemas.order_item import OrderItemResponse
 
 class OrderCreate(BaseModel):
-    total_price : float
+    total_price: float
 
 class OrderResponse(BaseModel):
-    id : int
-    user_id : int
-    total_price : float
-    status : str
-    created_at : datetime
-
+    id: UUID
+    user_id: UUID
+    total_price: float
+    status: str
+    created_at: datetime
+    items: List[OrderItemResponse] = []
 
     class Config:
         from_attributes = True

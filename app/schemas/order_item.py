@@ -1,18 +1,20 @@
+from uuid import UUID
 from pydantic import BaseModel
-from datetime import datetime
 from typing import Optional
+from app.schemas.product import ProductResponse
 
 class OrderItemCreate(BaseModel):
-    product_id: int
+    product_id: UUID
     quantity: int
     price: float
 
 class OrderItemResponse(BaseModel):
-    id : int
-    order_id : int
-    product_id : int
-    quantity : int
-    price : float
+    id: UUID
+    order_id: UUID
+    product_id: UUID
+    quantity: int
+    price: float
+    product: Optional[ProductResponse] = None
 
     class Config:
         from_attributes = True
